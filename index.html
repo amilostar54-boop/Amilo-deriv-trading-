@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AMILO - Live Deriv Kericho</title>
-<style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#0a0a0a;color:#fff}.h{background:#ff444f;padding:18px;text-align:center;position:sticky;top:0;z-index:10}.h h1{font-size:34px;letter-spacing:2px}.g{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}.c{background:#1a1a1a;border:1px solid #333;border-radius:16px;padding:15px;text-align:center}.c h3{font-size:11px;color:#888;letter-spacing:1px}.p{font-size:19px;font-weight:bold;color:#00ff88;margin-top:6px}.s{font-size:11px;margin-top:4px;color:#00ff88}.btn{width:100%;padding:15px;border:none;border-radius:30px;font-weight:bold;color:#fff;font-size:15px;margin:6px 0;cursor:pointer}.r{background:#ff444f}.w{background:#25D366}.box{background:#fff;border-radius:16px;margin:12px;overflow:hidden;height:420px;border:1px solid #333}.f{text-align:center;padding:20px;color:#555;font-size:11px}.dot{width:8px;height:8px;background:#00ff88;border-radius:50%;display:inline-block;animation:b 1s infinite}@keyframes b{50%{opacity:.3}}</style></head><body>
-<div class="h"><h1>AMILO</h1><p><span class="dot"></span> LIVE Deriv • Kericho, Kenya • 0707905752</p></div>
+<title>AMILO - Trade</title>
+<style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#0a0a0a;color:#fff}.h{background:#ff444f;padding:15px;text-align:center}.h h1{font-size:28px}.bal{background:#1a1a1a;padding:10px;text-align:center;border-bottom:1px solid #333}.g{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}.c{background:#1a1a1a;border:1px solid #333;border-radius:14px;padding:12px;text-align:center}.p{font-size:17px;font-weight:bold;color:#00ff88}.trade{background:#1e1e1e;border:1px solid #ff444f;border-radius:16px;margin:10px;padding:15px}.btn{width:48%;padding:14px;border:none;border-radius:25px;font-weight:bold;color:#fff;margin:1%;font-size:14px}.buyR{background:#00a859}.buyF{background:#ff444f}.r{background:#ff444f;width:100%;padding:12px;border-radius:25px;border:none;color:#fff;font-weight:bold;margin:5px 0}.box{background:#fff;border-radius:16px;margin:10px;overflow:hidden;height:350px}input,select{width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#0a0a0a;color:#fff;margin:5px 0}</style></head><body>
+<div class="h"><h1>AMILO TRADE 🔥</h1></div>
+<div class="bal">Balance: <span id="balance">--</span> USD | <span id="login">Not logged</span></div>
 <div class="g">
-<div class="c"><h3>VOLATILITY 75</h3><div class="p" id="v75">1,542,890.12</div><div class="s">● LIVE</div></div>
-<div class="c"><h3>VOLATILITY 100</h3><div class="p" id="v100">1,245,330.50</div><div class="s">● LIVE</div></div>
-<div class="c"><h3>BOOM 1000</h3><div class="p" id="b1000">3,245.78</div><div class="s">● LIVE</div></div>
-<div class="c"><h3>CRASH 1000</h3><div class="p" id="c1000">6,890.12</div><div class="s">● LIVE</div></div>
+<div class="c">V75<br><span class="p" id="v75">---</span></div>
+<div class="c">V100<br><span class="p" id="v100">---</span></div>
+<div class="c">BOOM 1000<br><span class="p" id="b1000">---</span></div>
+<div class="c">CRASH 1000<br><span class="p" id="c1000">---</span></div>
 </div>
-<div style="padding:0 12px">
-<button class="btn r" onclick="window.open('https://track.deriv.com/_6TgWQ7d0pV0YV2o5Jv8zGNd7ZgqdRLk/1/','_blank')">🚀 Open Real Deriv Account</button>
-<button class="btn w" onclick="window.open('https://wa.me/254707905752?text=Hello%20AMILO%2C%20nimeona%20site%20yako%20ya%20Deriv%20Kericho%20na%20nataka%20kujiunga%20na%20class','_blank')">💬 WhatsApp: 0707905752</button>
+<div class="trade">
+<select id="symbol"><option value="R_75">Volatility 75</option><option value="R_100">Volatility 100</option><option value="BOOM_1000">Boom 1000</option><option value="CRASH_1000">Crash 1000</option></select>
+<input type="password" id="token" placeholder="Paste Deriv API Token - will be saved">
+<input type="number" id="stake" value="1">
+<div style="display:flex"><button class="btn buyR" onclick="doTrade('CALL')">📈 RISE</button><button class="btn buyF" onclick="doTrade('PUT')">📉 FALL</button></div>
+<div id="status" style="text-align:center;font-size:12px;margin-top:10px;color:#aaa">Paste token from app.deriv.com/api-token</div>
+<button class="r" onclick="localStorage.removeItem('deriv_token');location.reload()">Logout / Change Token</button>
 </div>
-<div class="box"><iframe src="https://tradingview.deriv.com/deriv?market=synthetic_indices&symbol=R_75" style="width:100%;height:100%;border:0"></iframe></div>
-<div class="f">© 2026 AMILO Trading Kericho<br>Call/WhatsApp: 0707905752<br>Live Charts • Real Training</div>
+<div class="box"><iframe id="chart" src="https://tradingview.deriv.com/deriv?market=synthetic_indices&symbol=R_75" style="width:100%;height:100%;border:0"></iframe></div>
 <script>
-let prices={v75:1542890.12,v100:1245330.5,b1000:3245.78,c1000:6890.12};
-function tick(){
-  Object.keys(prices).forEach(id=>{
-    let change=(Math.random()-0.5)*(id.includes('b')||id.includes('c')?2.5:650);
-    prices[id]+=change;
-    let el=document.getElementById(id);
-    if(el){el.textContent=prices[id].toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
-  });
-  let now=new Date().toLocaleTimeString();
-  document.querySelectorAll('.s').forEach(e=>e.textContent='● LIVE '+now);
+let ws=new WebSocket('wss://ws.derivws.com/websockets/v3?app_id=1089');
+ws.onopen=()=>{['R_75','R_100','BOOM_1000','CRASH_1000'].forEach(s=>ws.send(JSON.stringify({ticks:s})));};
+ws.onmessage=e=>{let d=JSON.parse(e.data);if(d.tick){let m={R_75:'v75',R_100:'v100',BOOM_1000:'b1000',CRASH_1000:'c1000'};let el=document.getElementById(m[d.tick.symbol]);if(el)el.textContent=parseFloat(d.tick.quote).toFixed(2);}};
+
+let saved=localStorage.getItem('deriv_token');
+if(saved){document.getElementById('token').value=saved;login(saved);}
+document.getElementById('symbol').onchange=e=>{document.getElementById('chart').src='https://tradingview.deriv.com/deriv?market=synthetic_indices&symbol='+e.target.value;};
+
+function login(tok){let w=new WebSocket('wss://ws.derivws.com/websockets/v3?app_id=1089');w.onopen=()=>w.send(JSON.stringify({authorize:tok}));w.onmessage=ev=>{let d=JSON.parse(ev.data);if(d.authorize){document.getElementById('balance').textContent=d.authorize.balance;document.getElementById('login').textContent=d.authorize.loginid;document.getElementById('status').textContent='✅ Logged in: '+d.authorize.loginid;} if(d.error)document.getElementById('status').textContent='❌ '+d.error.message;};}
+
+function doTrade(type){
+let tok=document.getElementById('token').value.trim();if(!tok){alert('Paste token first');return;}
+localStorage.setItem('deriv_token',tok);login(tok);
+let sym=document.getElementById('symbol').value;let stake=document.getElementById('stake').value;
+document.getElementById('status').textContent='Placing trade...';
+let tr=new WebSocket('wss://ws.derivws.com/websockets/v3?app_id=1089');
+tr.onopen=()=>tr.send(JSON.stringify({authorize:tok}));
+tr.onmessage=ev=>{let d=JSON.parse(ev.data);if(d.authorize){tr.send(JSON.stringify({proposal:1,amount:stake,basis:'stake',contract_type:type,currency:'USD',duration:5,duration_unit:'t',symbol:sym}));} if(d.proposal){tr.send(JSON.stringify({buy:d.proposal.id,price:stake}));} if(d.buy){document.getElementById('status').textContent='✅ TRADE WIN! ID:'+d.buy.contract_id+' | Check app.deriv.com for result';} if(d.error){document.getElementById('status').textContent='❌ '+d.error.message;}};
 }
-setInterval(tick,700);
 </script></body></html>
