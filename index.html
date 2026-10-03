@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AMILO - Deriv Trading</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{background:#0a0a0a;color:#fff;font-family:sans-serif;margin:0;text-align:center}
+header{background:#ff444f;padding:25px;font-weight:bold}
+.card{background:#1a1a1a;margin:20px;padding:20px;border-radius:12px;border:1px solid #333}
+button{background:#ff444f;color:white;border:none;padding:15px 30px;border-radius:8px;font-size:18px;margin:10px}
+.price{font-size:32px;color:#00ff88}
+</style>
+</head>
+<body>
+<header><h1>AMILO</h1><p>Deriv Trading Platform</p></header>
+<div class="card">
+<h2>Live Market</h2>
+<div class="price" id="price">Loading...</div>
+<p>Volatility 100 Index</p>
+<button onclick="window.open('https://deriv.com','_blank')">Open Deriv Account</button>
+</div>
+<div class="card">
+<h3>Why AMILO?</h3>
+<p>✅ Fast Execution<br>✅ Deriv API Connected<br>✅ Mobile Ready</p>
+</div>
+<script>
+// This will be connected to Deriv live API next
+document.getElementById('price').innerText = '5000.23';
+</script>
+</body>
+</html>
