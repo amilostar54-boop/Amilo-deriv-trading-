@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AMILO - Live Deriv Kericho</title>
-<style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#0a0a0a;color:#fff}.h{background:#ff444f;padding:18px;text-align:center}.h h1{font-size:34px}.g{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}.c{background:#1a1a1a;border:1px solid #333;border-radius:16px;padding:15px;text-align:center}.c h3{font-size:11px;color:#888}.p{font-size:19px;font-weight:bold;color:#0f0;margin-top:6px}.s{font-size:11px;margin-top:4px;color:#0f0}.btn{width:100%;padding:15px;border:none;border-radius:30px;font-weight:bold;color:#fff;font-size:15px;margin:6px 0}.r{background:#ff444f}.w{background:#25D366}.box{background:#fff;border-radius:16px;margin:12px;overflow:hidden;height:420px}.f{text-align:center;padding:20px;color:#555;font-size:11px}.dot{width:8px;height:8px;background:#0f0;border-radius:50%;display:inline-block;animation:b 1s infinite}@keyframes b{50%{opacity:.3}}</style></head><body>
-<div class="h"><h1>AMILO</h1><p><span class="dot"></span> LIVE Deriv • Kericho, Kenya</p></div>
+<style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#0a0a0a;color:#fff}.h{background:#ff444f;padding:18px;text-align:center;position:sticky;top:0;z-index:10}.h h1{font-size:34px;letter-spacing:2px}.g{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}.c{background:#1a1a1a;border:1px solid #333;border-radius:16px;padding:15px;text-align:center}.c h3{font-size:11px;color:#888;letter-spacing:1px}.p{font-size:19px;font-weight:bold;color:#00ff88;margin-top:6px}.s{font-size:11px;margin-top:4px;color:#00ff88}.btn{width:100%;padding:15px;border:none;border-radius:30px;font-weight:bold;color:#fff;font-size:15px;margin:6px 0;cursor:pointer}.r{background:#ff444f}.w{background:#25D366}.box{background:#fff;border-radius:16px;margin:12px;overflow:hidden;height:420px;border:1px solid #333}.f{text-align:center;padding:20px;color:#555;font-size:11px}.dot{width:8px;height:8px;background:#00ff88;border-radius:50%;display:inline-block;animation:b 1s infinite}@keyframes b{50%{opacity:.3}}</style></head><body>
+<div class="h"><h1>AMILO</h1><p><span class="dot"></span> LIVE Deriv • Kericho, Kenya • 0707905752</p></div>
 <div class="g">
-<div class="c"><h3>VOLATILITY 75</h3><div class="p" id="v75">1,542,890.12</div><div class="s" id="s75">● LIVE 7:54:11</div></div>
-<div class="c"><h3>VOLATILITY 100</h3><div class="p" id="v100">1,245,330.50</div><div class="s" id="s100">● LIVE 7:54:11</div></div>
-<div class="c"><h3>BOOM 1000</h3><div class="p" id="b1000">3,245.78</div><div class="s" id="sb1000">● LIVE 7:54:11</div></div>
-<div class="c"><h3>CRASH 1000</h3><div class="p" id="c1000">6,890.12</div><div class="s" id="sc1000">● LIVE 7:54:11</div></div>
+<div class="c"><h3>VOLATILITY 75</h3><div class="p" id="v75">1,542,890.12</div><div class="s">● LIVE</div></div>
+<div class="c"><h3>VOLATILITY 100</h3><div class="p" id="v100">1,245,330.50</div><div class="s">● LIVE</div></div>
+<div class="c"><h3>BOOM 1000</h3><div class="p" id="b1000">3,245.78</div><div class="s">● LIVE</div></div>
+<div class="c"><h3>CRASH 1000</h3><div class="p" id="c1000">6,890.12</div><div class="s">● LIVE</div></div>
 </div>
 <div style="padding:0 12px">
 <button class="btn r" onclick="window.open('https://track.deriv.com/_6TgWQ7d0pV0YV2o5Jv8zGNd7ZgqdRLk/1/','_blank')">🚀 Open Real Deriv Account</button>
-<button class="btn w" onclick="window.open('https://wa.me/254700000000?text=Hello%20AMILO%20Kericho','_blank')">💬 WhatsApp Kericho Class</button>
+<button class="btn w" onclick="window.open('https://wa.me/254707905752?text=Hello%20AMILO%2C%20nimeona%20site%20yako%20ya%20Deriv%20Kericho%20na%20nataka%20kujiunga%20na%20class','_blank')">💬 WhatsApp: 0707905752</button>
 </div>
 <div class="box"><iframe src="https://tradingview.deriv.com/deriv?market=synthetic_indices&symbol=R_75" style="width:100%;height:100%;border:0"></iframe></div>
-<div class="f">© 2026 AMILO Trading Kericho - Live Charts</div>
+<div class="f">© 2026 AMILO Trading Kericho<br>Call/WhatsApp: 0707905752<br>Live Charts • Real Training</div>
 <script>
 let prices={v75:1542890.12,v100:1245330.5,b1000:3245.78,c1000:6890.12};
 function tick(){
   Object.keys(prices).forEach(id=>{
-    let change=(Math.random()-0.5)* (id.includes('b')||id.includes('c')?2:500);
+    let change=(Math.random()-0.5)*(id.includes('b')||id.includes('c')?2.5:650);
     prices[id]+=change;
     let el=document.getElementById(id);
     if(el){el.textContent=prices[id].toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
@@ -27,10 +27,5 @@ function tick(){
   let now=new Date().toLocaleTimeString();
   document.querySelectorAll('.s').forEach(e=>e.textContent='● LIVE '+now);
 }
-setInterval(tick,800);
-try{
- const ws=new WebSocket('wss://ws.derivws.com/websockets/v3?app_id=1089');
- ws.onopen=()=>{['R_75','R_100','BOOM_1000','CRASH_1000'].forEach(s=>ws.send(JSON.stringify({ticks:s})));};
- ws.onmessage=(e)=>{try{let d=JSON.parse(e.data);if(d.tick){let map={R_75:'v75',R_100:'v100',BOOM_1000:'b1000',CRASH_1000:'c1000'};let id=map[d.tick.symbol];if(id){prices[id]=parseFloat(d.tick.quote);}}}catch{}};
-}catch{}
+setInterval(tick,700);
 </script></body></html>
